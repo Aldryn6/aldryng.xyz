@@ -36,6 +36,65 @@
 			<h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>aldryng.xyz</strong></h4>
 			<h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-7">aldryng.xyz es una subsidiaria del imperio terrestre</h5>
 		  </div>
+		<style>
+  .spain-block {
+    width: 200px;
+    height: 101px;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+
+    &:hover {
+      border: 2px solid white;
+      rotate: 3deg;
+      scale: 1.05;
+      top: 1.25rem;
+      right: 1.25rem;
+    }
+  }
+
+  .spain-block img {
+    max-width: 100%;
+  }
+  .spain-block button {
+    border: 0;
+    background: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    cursor: pointer;
+
+    &:hover {
+      color: black;
+    }
+  }
+</style>
+
+<script type="module">
+  const bannerDisabled = localStorage.getItem("bloqueo_closed") === "true";
+
+  if (!bannerDisabled) {
+
+    const URL = "https://x.com/Manz/status/1893709639125987637";
+    const IMAGE_URL = "/assets/images/bloqueo.avif";
+
+    const html = /* html */`<div class="spain-block">
+      <button>✕</button>
+      <a href="${URL}"><img src="${IMAGE_URL}" alt="Este sitio web es bloqueado en España cuando hay fútbol" /></a>
+    </div>`;
+
+    document.body.insertAdjacentHTML("beforeend", html);
+    const bloqueo = document.querySelector(".spain-block");
+
+    bloqueo.querySelector("button").addEventListener("click", () => {
+      localStorage.setItem("bloqueo_closed", true);
+      bloqueo.remove();
+    });
+  }
+</script>
 		<div class="row justify-content-center">
 			
 			
